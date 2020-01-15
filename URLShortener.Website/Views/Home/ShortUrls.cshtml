@@ -1,0 +1,45 @@
+﻿@using URLShortener.Website.Common
+@model IEnumerable<ShortUrl>
+@{
+    ViewData["Title"] = "Short URLs";
+}
+
+<h5>Short URLs</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Alias)
+            </th>
+            <th>
+                Long URL
+            </th>
+            <th>
+                Short URL
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label class="col-form-label"> @Html.DisplayFor(modelItem => item.Alias)</label>
+
+                </td>
+                <td class="col">
+                    <input type="text" id="myOriginalUrl" readonly class="form-control-plaintext" value="@item.Url">
+                </td>
+                <td>
+                    <label class="col-form-label">
+                        <a href="@($"{MyHttpContext.AppBaseUrl}/{item.Alias}")">
+                            @($"{MyHttpContext.AppBaseUrl}/{item.Alias}")
+                        </a>
+                    </label>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

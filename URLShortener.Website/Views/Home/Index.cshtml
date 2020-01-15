@@ -1,0 +1,40 @@
+﻿@using URLShortener.Website.Common
+@model ShortUrl
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h5>Welcome to URL Shortener!</h5>
+<hr />
+<section>
+    <form asp-action="Index">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <label asp-for="Url" class="col-xl-2 col-form-label">Enter your URL:</label>
+            <div class="col-md-8">
+                <input asp-for="Url" class="form-control" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+        </div>
+
+        <label for="basic-url">Enter a custom alias (Optional)</label>
+
+        <div class="input-group mb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="aliasHelp">@($"{MyHttpContext.AppBaseUrl}/")</span>
+            </div>
+            <input asp-for="Alias" class="col-4 form-control" placeholder="CustomAlias" aria-describedby="aliasHelp" />
+        </div>
+        <div class="mb-3">
+            <small id="aliasHelp" class="form-text text-muted">May only contain letters and numbers</small>
+            <span asp-validation-for="Alias" class="text-danger"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Shorten URL" />
+    </form>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

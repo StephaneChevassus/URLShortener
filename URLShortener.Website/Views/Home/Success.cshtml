@@ -1,0 +1,51 @@
+﻿@using URLShortener.Website.Common
+@model ShortUrl
+@{
+    ViewData["Title"] = "Success";
+}
+
+<h5>Your shortened URL is ready!</h5>
+<hr />
+<div>
+    <div class="form-group row">
+        <label class="col-xl-2 col-form-label">Original URL:</label>
+        <div class="col-sm-8">
+            <div class="input-group">
+                <input type="text" id="myOriginalUrl" readonly class="form-control" value="@Model.Url">
+                <div class="input-group-append">
+                    <button class="input-group btn btn-outline-primary" data-clipboard-action="copy" data-clipboard-target="#myOriginalUrl">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-xl-2 col-form-label">Short URL:</label>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" id="myShortUrl" class="form-control" readonly value="@($"{MyHttpContext.AppBaseUrl}/{Model.Alias}")">
+                <div class="input-group-append">
+                    <button class="input-group btn btn-outline-primary" data-clipboard-action="copy" data-clipboard-target="#myShortUrl">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/clipboard/dist/clipboard.min.js"></script>
+    <script>
+            var clipboard = new ClipboardJS('.btn');
+
+            clipboard.on('success', function (e) {
+                console.log(e);
+            });
+
+            clipboard.on('error', function (e) {
+                console.log(e);
+            });
+    </script>
+}
