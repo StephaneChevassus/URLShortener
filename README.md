@@ -1,3 +1,4 @@
+
 # URL Shortener sample ASP.NET Core MVC web application
 
 This is a sample website written in ASP.NET Core 3.1 that allows any user to shorten a URL.
@@ -49,3 +50,7 @@ The web app is developed using the responsive web design approach so it can adap
 ### Short URL Created
 
 ![Short URL Created](/static/screenshots/screenshot-shortUrl-created-mobile.png "Short URL Created")
+
+## Creation of an Angular Application for the FE
+
+Please see this repo for more info: https://github.com/StephaneChevassus/URLShortenerAngular

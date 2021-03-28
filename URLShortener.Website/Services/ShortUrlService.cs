@@ -17,6 +17,11 @@ namespace URLShortener.Website.Services
         {
             _shortUrls = new List<ShortUrl>();
 
+            //Seed some data
+            _shortUrls.Add(new ShortUrl { Url = "https://dotnet.microsoft.com/apps/aspnet", Alias = "aspnet" });
+            _shortUrls.Add(new ShortUrl { Url = "https://angular.io", Alias = "angular" });
+            _shortUrls.Add(new ShortUrl { Url = "https://dotnet.microsoft.com/download", Alias = "dotnet" });
+
             // Add reserved words that can't be used as alias such as bad words etc...
             // Add controller route name etc...
             _reservedAlias = new List<string> { "Home", "Index", "Shared" };

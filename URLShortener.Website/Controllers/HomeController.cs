@@ -63,7 +63,6 @@ namespace URLShortener.Website.Controllers
                      */
 
                     ModelState.AddModelError("Alias", "Alias already exists.");
-                    return View();
                 }
             }
             return View();
